@@ -25,50 +25,35 @@ const RegisterArea = () => {
         console.log('user: ' + user)
         console.log('pass: ' + pass)
 
-        if (!EmailValidator.validate(email)) {
-            setEmailError(true)
-        } else {
-            setEmailError(false)
-        }
-        if (user == '') {
+        if (user === '') {
             setuserError(true)
+            return
         } else {
             setuserError(false)
         }
-        if (pass == '') {
+        if (!EmailValidator.validate(email) || email === '') {
+            setEmailError(true)
+            return
+        } else {
+            setEmailError(false)
+        }
+        if (pass === '' || pass.length < 6) {
             setPassError(true)
+            return
         } else {
             setPassError(false)
         }
 
         if (!emailError || !userError || !passError) {
-            if (status) {
-                Swal.fire({
-                    icon: 'question',
-                    title: 'Mr. ' + userData.name,
-                    html:
-                        'You are already Registered <br />' +
-                        'You can go to <b>' +
-                        'Dashboard</b> ' +
-                        'or our <b>Shop</b> page',
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        userData.
-                            history.push('/my-account')
-                    } else {
-                        // not clicked
-                    }
-                });
-            } else {
-                dispatch({ type: "user/register", payload: { user, email, pass } })
+            dispatch({ type: "user/register", payload: { user, email, pass } })
+            
+            Swal.fire({
+                icon: 'success',
+                title: 'Cadastro realizado!',
+                text: 'Bem-vindo ' + user
+            })
 
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Registration Sucessfull',
-                    text: 'Welcome Mr.' + user
-                })
-                history.push("/my-account");
-            }
+            history.push("/my-account");
         }
     }
     return (
@@ -78,27 +63,30 @@ const RegisterArea = () => {
                     <div className="row">
                         <div className="col-lg-6 offset-lg-3 col-md-12 col-sm-12 col-12">
                             <div className="account_form">
-                                <h3>Register</h3>
-                                <form method="post">
-                                    <div className="default-form-box">
-                                        <label>Username<span className="text-danger">*</span></label>
-                                        <input id='user' type="text" className="form-control" value={user} onChange={(txt) => setUser(txt.target.value)} />
-                                        {userError &&
-                                            < span className='errorLabel' id='errorMessageFirstName'>O campo Additional Notes deve ser prenchido</span>
-                                        }
-                                    </div>
-                                    <div className="default-form-box">
-                                        <label>Email<span className="text-danger">*</span></label>
-                                        <input id='email' type="email" className="form-control" value={email} onChange={(e) => setEmail(e.target.value)} />
-                                    </div>
-                                    <div className="default-form-box">
-                                        <label>Passwords<span className="text-danger">*</span></label>
-                                        <input id='password' type="password" className="form-control" value={pass}
-                                            onChange={(e) => { setPass(e.target.value) }} minLength="8" />
-                                    </div>
-                                </form>
-
-                                <button id='btnRegister' className="theme-btn-one btn-black-overlay btn_md" onClick={register}>Register</button>
+                                <h3>Cadastro de usuário</h3>
+                                <div className="default-form-box">
+                                    <label>Nome<span className="text-danger">*</span></label>
+                                    <input id='user' type="text" className="form-control" value={user} onChange={(txt) => setUser(txt.target.value)} />
+                                    {userError &&
+                                        < span className='errorLabel' id='errorMessageFirstName'>O campo nome deve ser prenchido</span>
+                                    }
+                                </div>
+                                <div className="default-form-box">
+                                    <label>E-mail<span className="text-danger">*</span></label>
+                                    <input id='email' type="email" className="form-control" value={email} onChange={(e) => setEmail(e.target.value)} />
+                                    {emailError &&
+                                        < span className='errorLabel' id='errorMessageFirstName'>O campo e-mail deve ser prenchido corretamente</span>
+                                    }
+                                </div>
+                                <div className="default-form-box">
+                                    <label>Senha<span className="text-danger">*</span></label>
+                                    <input id='password' type="password" className="form-control" value={pass}
+                                        onChange={(e) => { setPass(e.target.value) }} minLength="8" />
+                                    {passError &&
+                                        < span className='errorLabel' id='errorMessageFirstName'>O campo senha deve ter pelo menos 6 dígitos</span>
+                                    }
+                                </div>
+                                <button id='btnRegister' className="theme-btn-one btn-black-overlay btn_md" onClick={register}>Cadastrar</button>
                             </div>
                         </div>
                     </div>

@@ -5293,6 +5293,12 @@ table {
    Login Page 
 -------------------------------------*/
 
+.invalid_input {
+    color: red;
+    font-size: 14px;
+    margin-left: 5px;
+}
+
 .account_form {
     box-shadow: 0px 0px 7px 5px #0000000a;
     padding: 30px 40px;
@@ -5307,8 +5313,8 @@ table {
     padding-top: 30px;
 }
 
-.account_form form .default-form-box {
-    margin-bottom: 30px;
+.account_form .default-form-box {
+    margin-bottom: 20px;
 }
 
 .login_submit {

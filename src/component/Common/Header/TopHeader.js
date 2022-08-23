@@ -15,8 +15,8 @@ const TopHeader = () => {
     const logout = () => {
         Swal.fire({
             icon: 'success',
-            title: 'Logout Sucessfull',
-            text: 'Thank You'
+            title: 'Logout realizado',
+            text: 'Obrigado, e volte sempre!'
         })
         dispatch({ type: "user/logout" })
         history.push("/login");
