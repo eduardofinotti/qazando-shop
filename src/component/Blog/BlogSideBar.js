@@ -171,7 +171,7 @@ const BlogSideBar = () => {
               <ul>
                 {InstagramData.map((data, index) => (
                   <li className="img-zoom-hover" key={index}>
-                    <a className="image-link" href="https://www.instagram.com"><img
+                    <a className="image-link" href=""><img
                       src={data.img} alt="instagram" /></a>
                   </li>
                 ))}

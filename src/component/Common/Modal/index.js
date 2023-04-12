@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 import Modal from 'react-bootstrap/Modal';
 import { useDispatch } from "react-redux";
 import { RatingStar } from "rating-star";
-import { FacebookShareButton, TwitterShareButton, LinkedinShareButton, TelegramShareButton, WhatsappShareButton } from "react-share";
-import { FacebookIcon, TwitterIcon, LinkedinIcon, TelegramIcon, WhatsappIcon } from "react-share";
 
 const MyVerticallyCenteredModal = (props) => {
     let dispatch = useDispatch();
@@ -95,27 +93,6 @@ const MyVerticallyCenteredModal = (props) => {
                                                     <a href="#!" className="theme-btn-one btn-black-overlay btn_sm" onClick={() => addToCart(props.data.id)}>Add To Cart</a>
                                                 </div>
                                             </form>
-                                            <div className="modal_share_icons_one">
-                                                <h4>SHARE THIS PRODUCT</h4>
-                                                <div className="posted_icons_one">
-                                                    <FacebookShareButton url={"https://themeforest.net/item/andshop-ecommerce-react-js-template/33822003"} quote={"Best React.js ecommerce Templete"}>
-                                                        <FacebookIcon size={32} round />
-                                                    </FacebookShareButton>
-                                                    <TwitterShareButton url={"https://themeforest.net/item/andshop-ecommerce-react-js-template/33822003"} title={"Best React.js ecommerce Templete"}>
-                                                        <TwitterIcon size={32} round />
-                                                    </TwitterShareButton>
-                                                    <LinkedinShareButton url={"https://themeforest.net/item/andshop-ecommerce-react-js-template/33822003"} title={"Best React.js ecommerce Templete"}>
-                                                        <LinkedinIcon size={32} round />
-                                                    </LinkedinShareButton>
-                                                    <TelegramShareButton url={"https://themeforest.net/item/andshop-ecommerce-react-js-template/33822003"} title={"Best React.js ecommerce Templete"}>
-                                                        <TelegramIcon size={32} round />
-                                                    </TelegramShareButton>
-                                                    <WhatsappShareButton url={"https://themeforest.net/item/andshop-ecommerce-react-js-template/33822003"} title={"Best React.js ecommerce Templete"}>
-                                                        <WhatsappIcon size={32} round />
-                                                    </WhatsappShareButton>
-                                                </div>
-
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
